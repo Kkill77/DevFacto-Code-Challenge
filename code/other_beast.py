@@ -1,0 +1,2 @@
+def otherBeastScreen():
+	return "otherBeast"

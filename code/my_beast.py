@@ -1,0 +1,2 @@
+def myBeastScreen():
+	return "myBeast"

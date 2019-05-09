@@ -1,0 +1,74 @@
+import pygame
+from util import displayText, button
+from Beast import Beast
+
+# declaring global variables needed
+white = (255, 255, 255)
+hovergreen = (140, 240, 100)
+green = (140, 200, 100)
+hoverred = (255, 0, 0)
+red = (200, 0, 0)
+blue = (0, 0, 200)
+hoverblue = (0, 0, 255)
+black = (0, 0, 0)
+display_width, display_height = 2000, 1000
+
+# initializing menu screen start up
+clock = pygame.time.Clock()
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+
+background = pygame.image.load('../images/scary_sully.png')
+background = pygame.transform.scale(background, (1000, 500))
+button_size = int((display_width / display_height) * 25) 
+
+mySet = set()
+otherSet = set()
+
+def readFile():
+    file = open("data.txt", "r")
+    counter = 0
+    for line in file:
+        counter += 1
+        if (counter > 1):
+            tempBeast = Beast(0, 0, 0, 0, 0, 0, 0, 0, 0)
+            char = line.split(",")
+            tempBeast.ident = char[0]
+            tempBeast.name = char[1]
+            tempBeast.species = char[2]
+            tempBeast.age = char[3]
+            tempBeast.sex = char[4]
+            tempBeast.appointment = char[5]
+            tempBeast.info = char[6]
+            tempBeast.med = char[7]
+            tempBeast.image = char[8]
+            if (counter == 2):
+                mySet.add(tempBeast)
+            else:
+                otherSet.add(tempBeast)
+
+readFile()
+
+def menuScreen(state):
+    # The menuScreen function takes in the paramater 'state' and returns the 
+    # next selected state that the user wishes to play. It is responsible for
+    # displaying the buttons to the screen and navigating between the states.
+    gameDisplay.blit(background, (500, 300))
+    displayText("BeastKeeper", '../fonts/Antonio-Bold.ttf', 200, display_width / 2, (display_height / 5),
+                 white, 0)
+
+    # creating the buttons
+    my_state = button("My Beasts", '../fonts/Antonio-Regular.ttf', button_size, white, green, 
+                        hovergreen, display_width / 5, display_height - button_size, 50, "myBeast")
+    other_state = button("Other Beasts", '../fonts/Antonio-Regular.ttf', button_size, white, blue,
+                             hoverblue, display_width / 2, display_height - button_size, 50, 
+                             "otherBeast")
+    quit_state = button("Quit", '../fonts/Antonio-Regular.ttf', button_size, white, red, hoverred,
+                        (4*display_width) / 5, display_height - button_size, 50, "quit")
+
+    # returning the state selected
+    if my_state != state:
+        return my_state
+    elif quit_state != state:
+        return quit_state
+    elif other_state != state:
+        return other_state
