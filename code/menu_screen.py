@@ -1,6 +1,5 @@
 import pygame
 from util import displayText, button
-from Beast import Beast
 
 # declaring global variables needed
 white = (255, 255, 255)
@@ -21,37 +20,12 @@ background = pygame.image.load('../images/scary_sully.png')
 background = pygame.transform.scale(background, (1000, 500))
 button_size = int((display_width / display_height) * 25) 
 
-mySet = set()
-otherSet = set()
-
-def readFile():
-    file = open("data.txt", "r")
-    counter = 0
-    for line in file:
-        counter += 1
-        if (counter > 1):
-            tempBeast = Beast(0, 0, 0, 0, 0, 0, 0, 0, 0)
-            char = line.split(",")
-            tempBeast.ident = char[0]
-            tempBeast.name = char[1]
-            tempBeast.species = char[2]
-            tempBeast.age = char[3]
-            tempBeast.sex = char[4]
-            tempBeast.appointment = char[5]
-            tempBeast.info = char[6]
-            tempBeast.med = char[7]
-            tempBeast.image = char[8]
-            if (counter == 2):
-                mySet.add(tempBeast)
-            else:
-                otherSet.add(tempBeast)
-
-readFile()
 
 def menuScreen(state):
     # The menuScreen function takes in the paramater 'state' and returns the 
     # next selected state that the user wishes to play. It is responsible for
     # displaying the buttons to the screen and navigating between the states.
+    gameDisplay.fill(black)
     gameDisplay.blit(background, (500, 300))
     displayText("BeastKeeper", '../fonts/Antonio-Bold.ttf', 200, display_width / 2, (display_height / 5),
                  white, 0)
