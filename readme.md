@@ -11,3 +11,8 @@ Day 2 (2 hours):
 	- Implemented additional states
 	- Improved functionality of buttons
 	- Created function to display beast info on screen
+
+Day 3 (2 hours):
+	- Simplified profile screen to reduce repeated code
+	- Implemmented profile pictures
+	- Added remaining profile information

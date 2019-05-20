@@ -15,8 +15,7 @@ display_width, display_height = 2000, 1000
 # initializing menu screen start up
 clock = pygame.time.Clock()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-
-background = pygame.image.load('../images/scary_sully.png')
+background = pygame.image.load('../images/scary_sully.png').convert_alpha()
 background = pygame.transform.scale(background, (1000, 500))
 button_size = int((display_width / display_height) * 25) 
 
