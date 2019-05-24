@@ -1,4 +1,4 @@
-/*id, name, species, age, sex, appointment, info, med history, image*/
-1,Bob,Dragon,124,Male,June 16,blah blah blah,Runny Nose,dragon.jpg
-2,Jake,Lion,15,Male,June 2,...,Mild Cough,lion.jpg
-3,Mary,Snake,8,Female,June 12,...,None,snake.png
+/*id, name, species, age, sex, appointment, bio, med history, image*/
+1,Name: Bob,Species: Dragon,Age: 124,Sex: Male,June 16,Bio: Friendly and likes to eat,Illness: Runny Nose,dragon.jpg
+2,Name: Jake,Species: Lion,Age: 15,Sex: Male,None,Bio: Loud and likes to chat,Illness: Mild Cough,lion.jpg
+3,Name: Mary,Species: Snake,Age: 8,Sex: Female,None,Bio: Shy and keeps to herself,Illness: Fever,snake.png

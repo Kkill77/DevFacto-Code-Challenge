@@ -30,7 +30,7 @@ def readFile():
             tempBeast.age = char[3]
             tempBeast.sex = char[4]
             tempBeast.appointment = char[5]
-            tempBeast.info = char[6]
+            tempBeast.bio = char[6]
             tempBeast.med = char[7]
             tempBeast.image = char[8].strip('\n')
             if (counter == 2):
@@ -40,6 +40,11 @@ def readFile():
 
 readFile()
 
+def findBeast(id):
+    for beast in otherBeasts:
+        if beast.ident == id:
+            myBeasts.append(beast)
+            otherBeasts.remove(beast)
 # main game loop
 def game_loop(quit):
     while not quit:
@@ -55,6 +60,9 @@ def game_loop(quit):
             quit = profileScreen(myBeasts, True)
         elif gameState == "otherBeast" and otherBeasts:
             quit = profileScreen(otherBeasts, False)
+            if quit != True and quit != None:
+                findBeast(quit)
+                quit = False
         # updating display and establishing FPS
         pygame.display.update()
         clock.tick(60)
