@@ -1,6 +1,7 @@
+# Importing the appropriate files and libraries
 import pygame
 
-# establishing global variables
+# Establishing global variables
 display_width, display_height = 2000, 1000
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 

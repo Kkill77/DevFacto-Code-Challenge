@@ -1,12 +1,14 @@
+# Importing the appropriate files and libraries
 import pygame
 import sys
 from menu_screen import menuScreen
 from beast_profile import profileScreen
 from Beast import Beast
-# setting up pygame
+
+# Setting up pygame
 pygame.init()
 
-# initializing display and clock
+# Initializing display and clock
 pygame.display.set_caption("Code Challenge")
 clock = pygame.time.Clock()
 
@@ -17,6 +19,11 @@ myBeasts = []
 otherBeasts = []
 
 def readFile():
+    '''
+    The readFile function takes in the data.txt file and creates objects based on its values.
+    This function takes in no arguments.
+    This function does not return anything.
+    '''
     file = open("data.txt", "r")
     counter = 0
     for line in file:
@@ -38,21 +45,30 @@ def readFile():
             else:
                 otherBeasts.append(tempBeast)
 
+# Reading in the file.
 readFile()
 
 def findBeast(id):
+    '''
+    The findBeast function finds the beast with a matching ID in the otherbeast array.
+    The function adds this beast to the owned beast array and removes it from the otherbeast.
+    This function takes in one argument.
+    id: This is the ID of the selected beast to find.
+    This function returns true if a conflict is detected.
+    '''
     for beast in otherBeasts:
         if beast.ident == id:
             myBeasts.append(beast)
             otherBeasts.remove(beast)
-# main game loop
+
+# Main game loop
 def game_loop(quit):
     while not quit:
-        # handling quit
+        # Handling quit
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit = True
-        # default run state is the menu screen
+        # Default run state is the menu screen
         gameState = menuScreen(None)
         if gameState == "quit":
             quit = True
@@ -63,13 +79,13 @@ def game_loop(quit):
             if quit != True and quit != None:
                 findBeast(quit)
                 quit = False
-        # updating display and establishing FPS
+        # Updating display and establishing FPS
         pygame.display.update()
         clock.tick(60)
 
-# calling game loop
+# Calling game loop
 game_loop(quit)
 
-# quitting appropriately when done playing
+# Quitting appropriately when done playing
 pygame.quit()
 sys.exit()

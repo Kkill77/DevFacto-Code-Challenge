@@ -1,3 +1,4 @@
+# This is the definition of the Beast class.
 class Beast:
 	def __init__(self, ident, name, species, age, sex, appointment, bio, med, image):
 		self.ident = ident
